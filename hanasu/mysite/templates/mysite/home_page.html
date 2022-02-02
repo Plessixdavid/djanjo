@@ -1,0 +1,37 @@
+{% extends 'mysite/_base.html' %}
+{% load static %}
+    {% block title %}Hanasu{% endblock title %}
+    {% block content %}
+    <header>
+        <nav>
+            <label for="toggle">☰</label>
+            <input type="checkbox" id="toggle">
+            <div class="main_pages">
+                <a href="#">Accueil</a>
+                <a href="#">Maneki Neko</a>
+                <a href="#">Lexique</a>
+                <a href="#">Cours de japonais</a>
+                <a href="#">Contact</a>
+                
+
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <div class="child" id="child-1"><a href="/hanasu_maneki_neko" target="_blank"><img src="{% static "mysite/img/maneki.jpg"%}" alt="Maneki Neko Game"></a></div>
+            <div class="child" id="child-2"><img src="{% static "mysite/img/question.jpg"%}" alt="Maneki Neko Game"></div>
+            <div class="child" id="child-3"><a href="https://cours-de-japonais.com" target="_blank"><img src="{% static "mysite/img/sophie.png"%}" alt="Maneki Neko Game"></a></div>
+            <div class="child" id="child-4"><img src="{% static "mysite/img/datura.jpg"%}" alt="Maneki Neko Game"></div>
+        </div>
+    </section>
+
+    <footer>
+        <section>
+            <p>
+                Créer par David Plessix, Formation Dev Web et Web Mobile.
+                Projet N°3 soutenance 2022
+            </p>
+        </section>
+    </footer>
+    {% endblock content %}
