@@ -134,6 +134,9 @@ section{
     border-radius: 150px;
 }
 
+a{
+  text-decoration: none;
+}
 @media all and (max-width: 991px)
 {
 

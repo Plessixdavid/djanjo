@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ManekiConfig(AppConfig):
+class AuthenticationConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'maneki'
+    name = 'authentication'

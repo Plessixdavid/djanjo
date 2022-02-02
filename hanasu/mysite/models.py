@@ -9,18 +9,19 @@ from django.db import models
 
 
 
-class Ideogramm(models.Model):
-    
-    romanji = models.CharField(max_length=50, null=True)
-    Img_link = models.CharField(max_length=100, null=True)
-    # faire foreign pour joindre les types d'ideogramm
-    
-
-    def __str__(self):
-        return f"{self.romanji}- {self.Img_link}"
-    
 class Ideotype(models.Model):
     Name = models.CharField(max_length=25)
 
     def __str__(self):
         return f"{self.Name}"
+
+class Ideogramm(models.Model):
+    
+    romanji = models.CharField(max_length=50, null=True)
+    Img_link = models.CharField(max_length=100, null=True)
+    # faire foreign pour joindre les types d'ideogramm
+    ideotype = models.ForeignKey(Ideotype, null=True,on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f"{self.romanji} - {self.Img_link} - {self.ideotype}"
+    
