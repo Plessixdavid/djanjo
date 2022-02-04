@@ -6,11 +6,12 @@
         <label for="toggle">☰</label>
         <input type="checkbox" id="toggle">
         <div class="main_pages">
-            <a href="#">Accueil</a>
-            <a href="#">Maneki Neko</a>
-            <a href="#">Lexique</a>
+            <a href="{% url 'index' %}">Accueil</a>
+            <a href="{% url 'maneki_neko' %}">Maneki Neko</a>
+            <a href="{% url 'lexique' %}">Lexique</a>
             <a href="#">Cours de japonais</a>
             <a href="#">Contact</a>
+            <a href="{% url 'logout' %}">{{user.username}} / se déconnecter</a>
         </div>
     </nav>
     <div class="checking">

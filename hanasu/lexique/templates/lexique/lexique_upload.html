@@ -1,6 +1,5 @@
-{% extends 'mysite/_base.html' %}
+{% extends 'lexique/_base.html' %}
 {% load static %}
-    {% block title %}Hanasu{% endblock title %}
     {% block content %}
     <header>
         <nav>
@@ -17,15 +16,15 @@
             </div>
         </nav>
     </header>
-    <section>
-        <div class="container">
-            <div class="child" id="child-1"><a href="{% url 'maneki_neko' %}" target="_blank"><img src="{% static "mysite/img/maneki.jpg"%}" alt="Maneki Neko Game"></a></div>
-            <div class="child" id="child-2"><a href="{% url 'lexique' %}" target="_blank"><img src="{% static "mysite/img/question.jpg"%}" alt="lexique"></div>
-            <div class="child" id="child-3"><a href="https://cours-de-japonais.com" target="_blank"><img src="{% static "mysite/img/sophie.png"%}" alt="cours de japonais"></a></div>
-            <div class="child" id="child-4"><img src="{% static "mysite/img/datura.jpg"%}" alt="Maneki Neko Game"></div>
-        </div>
+        <h2>Ajouter un mot</h2>
+        {% comment %}  attribut enctype obligatoire pour que le formulaire puisse gérer l’envoi de fichiers. {% endcomment %}
+    <section>  
+        <form method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Publier</button>
+        </form>
     </section>
-
     <footer>
         <section>
             <p>
@@ -35,4 +34,3 @@
         </section>
     </footer>
     {% endblock content %}
-    

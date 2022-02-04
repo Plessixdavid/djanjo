@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 from mysite.models import Ideogramm
@@ -9,14 +10,13 @@ def index(request):
     css = "mysite/style.css"
     return render(request, "mysite/index.html", {"css":css})
 
-def hanasulogin(request):
-    css = "mysite/login_style.css"
-    return render(request, "mysite/login.html", {"css":css})
 
 def hanasuregister(request):
+    
     css = "mysite/inscrip_style.css"
     return render(request, "mysite/inscription.html", {"css":css})
 
+@login_required
 def hanasuhome(request):
     css = "mysite/home_style.css"
     return render(request, "mysite/home_page.html", {"css":css})

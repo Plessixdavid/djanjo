@@ -1,0 +1,32 @@
+{% extends 'lexique/_base.html' %}
+{% block content %}
+<header>
+    <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle">
+        <div class="main_pages">
+            <a href="{% url 'index' %}">Accueil</a>
+            <a href="{% url 'maneki_neko' %}">Maneki Neko</a>
+            <a href="{% url 'lexique' %}">Lexique</a>
+            <a href="#">Cours de japonais</a>
+            <a href="#">Contact</a>
+            <a href="{% url 'logout' %}">{{user.username}} / se déconnecter</a>
+
+        </div>
+    </nav>
+</header>
+    <h2>Lexique<a href="{% url 'lexique_upload' %}"> Ajouter</a></h2>
+    <section>
+        <div class="container">
+            {% for photo in photos %}
+                <img src="{{ photo.image.url }}">
+                <div>
+                    <h3>Romanji:</h3>
+                    <p>{{ photo.romanji }}</p>
+                    <h3>description:</h3>
+                    <p>{{photo.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

@@ -17,15 +17,27 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
 from mysite import views
+import authentication.views
+import lexique.views
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('hanasu_login', views.hanasulogin),
-    path('hanasu_register', views.hanasuregister),
-    path('hanasu_home', views.hanasuhome),
-    path('hanasu_maneki_neko', views.hanasugame),
-    path('hanasu_contact', views.contact)
+    path('index', views.index, name ='index'),
+    path('hanasu_register', authentication.views.signup_page, name='signup'),
+    path('hanasu_home', views.hanasuhome, name ='home'),
+    path('hanasu_maneki_neko', views.hanasugame, name ='maneki_neko'),
+    # chemin url de la page connection.
+    path('hanasu_login', authentication.views.login_page, name ='login'),
+    path('logout', authentication.views.logout_user, name ='logout'),
+    # chemin vers l'appli lexique
+    path('hanasu_lexique', lexique.views.lexique, name ='lexique'),
+    path('hanasu_lexique/upload/', lexique.views.lexique_upload, name='lexique_upload')
 ]
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
